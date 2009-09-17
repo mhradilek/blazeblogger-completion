@@ -1,0 +1,82 @@
+#!/bin/bash
+
+# blazeblogger -- bash completion script for BlazeBlogger
+# Copyright (C) 2009 Miroslav Hradílek
+
+# This program is  free software:  you can redistribute it and/or modify it
+# under  the terms  of the  GNU General Public License  as published by the
+# Free Software Foundation, version 3 of the License.
+#
+# This program  is  distributed  in the hope  that it will  be useful,  but
+# WITHOUT  ANY WARRANTY;  without  even the implied  warranty of MERCHANTA-
+# BILITY  or  FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public
+# License for more details.
+#
+# You should have received a copy of the  GNU General Public License  along
+# with this program. If not, see <http://www.gnu.org/licenses/>.
+
+# handle general blaze command
+_blaze() 
+{
+  local cur prev opts
+  
+  # initial variables
+  COMPREPLY=()
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  prev="${COMP_WORDS[COMP_CWORD-1]}"
+  sec="${COMP_WORDS[1]}"
+  
+  # basic opts - blaze utilities first option
+  opts="init config add edit remove list make log"
+
+  # handle utility dependent opts  
+  case "${sec}" in
+    init)
+      # call init handler
+      _blaze_init "$cur" "$prev"
+      return 0
+      ;;
+    config)
+      
+      ;;
+    *)
+      # do nothing
+      ;;
+  esac
+
+  # handle basic opts ie. blaze utilities
+  COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+  return 0
+}
+# bind _blaze function to blaze command
+complete -F _blaze blaze
+
+# handle blaze-init command
+# _blaze_init [<current comp word> <previous comp word>]
+_blaze_init()
+{
+  local cur prev specopts
+  
+  # initial variables
+  COMPREPLY=()
+  if [ "$#" -eq 2 ]; then
+    # functon was called with parameters
+    cur=$1
+    prev=$2
+  else
+    # function was called without parameters
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+  fi
+  
+  # utility specific options
+  specopts="--blogdir --force --quiet --verbose --help --version"
+
+  # reply completions
+  if [[ "$cur" == -* ]]; then
+    COMPREPLY=( $(compgen -W "${specopts}" -- ${cur}) )
+    return 0
+  fi
+}
+# bind _blaze_init function to blaze-init command
+complete -F _blaze_init blaze-init
