@@ -71,10 +71,10 @@ _blaze_log()
 
 # main function accepts one optional argument utility
 # _blaze [utility]
-_blaze() 
+_blaze()
 {
   local cur prev opts params first
-  
+
   # initial variables
   COMPREPLY=()
   cur="${COMP_WORDS[COMP_CWORD]}"
@@ -87,11 +87,11 @@ _blaze()
     # function called without parameter - wrapper call
     first="${COMP_WORDS[1]}"
   fi
-  
+
   # basic options - blaze utilities - wrapper's first option
   opts="init config add edit remove list make log"
 
-  # handle utility dependent opts  
+  # handle utility dependent opts
   case "${first}" in
     init)
     # init handler code ---------------------------------------------------
@@ -99,7 +99,7 @@ _blaze()
       local specopts="-b --blogdir -f --force -q --quiet -V --verbose -h \
 --help -v --version"
 
-	    # argument completions
+      # argument completions
       case "$prev" in
         -b|--blogdir)
           COMPREPLY=( $(compgen -d -- ${cur}) )
@@ -109,7 +109,7 @@ _blaze()
           # do nothing
           ;;
       esac
-      
+
       # no argument completions
       if [[ "$cur" == -* ]]; then
         COMPREPLY=( $(compgen -W "${specopts}" -- ${cur}) )
@@ -126,7 +126,7 @@ blog.lang blog.posts blog.url color.list color.log core.editor \
 core.encoding core.extension post.author post.date post.tags user.name \
 user.email"
 
-	    # argument completions
+      # argument completions
       case "$prev" in
         -b|--blogdir)
           COMPREPLY=( $(compgen -d -- ${cur}) )
@@ -140,7 +140,7 @@ user.email"
           # do nothing
           ;;
       esac
-      
+
       # no argument completions
       if [[ "$cur" == -* ]]; then
         COMPREPLY=( $(compgen -W "${specopts}" -- ${cur}) )
@@ -157,7 +157,7 @@ user.email"
 --tags -u --url -p --page --pages -P --post --posts -H --html  -q --quiet \
 -V --verbose -h --help -v --version"
 
-	    # argument completions
+      # argument completions
       case "$prev" in
         -b|--blogdir)
           COMPREPLY=( $(compgen -d -- ${cur}) )
@@ -175,7 +175,7 @@ user.email"
           # do nothing
           ;;
       esac
-      
+
       # no argument completions
       if [[ "$cur" == -* ]]; then
         COMPREPLY=( $(compgen -W "${specopts}" -- ${cur}) )
@@ -191,7 +191,7 @@ user.email"
       local specopts="-b --blogdir -p --page -P --post -f --force -H \
 --html -q --quiet -V --verbose -h --help -v --version"
 
-	    # argument completions
+      # argument completions
       case "$prev" in
         -b|--blogdir)
           COMPREPLY=( $(compgen -d -- ${cur}) )
@@ -201,7 +201,7 @@ user.email"
           # do nothing
           ;;
       esac
-      
+
       # no argument completions
       if [[ "$cur" == -* ]]; then
         COMPREPLY=( $(compgen -W "${specopts}" -- ${cur}) )
@@ -214,7 +214,7 @@ user.email"
       local specopts="-b --blogdir -p --page --pages -P --post --posts -i \
 --interactive -f --force -q --quiet -V --verbose -h --help -v --version"
 
-	    # argument completions
+      # argument completions
       case "$prev" in
         -b|--blogdir)
           COMPREPLY=( $(compgen -d -- ${cur}) )
@@ -224,7 +224,7 @@ user.email"
           # do nothing
           ;;
       esac
-      
+
       # no argument completions
       if [[ "$cur" == -* ]]; then
         COMPREPLY=( $(compgen -W "${specopts}" -- ${cur}) )
@@ -239,7 +239,7 @@ user.email"
 --stats -s --short -r --reverse -c --color --colour -C --no-color \
 --no-colour -q --quiet -V --verbose -h --help -v --version"
 
-	    # argument completions
+      # argument completions
       case "$prev" in
         -b|--blogdir)
           COMPREPLY=( $(compgen -d -- ${cur}) )
@@ -265,7 +265,7 @@ user.email"
           # do nothing
           ;;
       esac
-      
+
       # no argument completions
       if [[ "$cur" == -* ]]; then
         COMPREPLY=( $(compgen -W "${specopts}" -- ${cur}) )
@@ -279,7 +279,7 @@ user.email"
 -p --no-posts -P --no-pages -t --no-tags -r --no-rss -F --full-paths -q \
 --quiet -V --verbose -h --help -v --version"
 
-	    # argument completions
+      # argument completions
       case "$prev" in
         -b|--blogdir|-d|--destdir)
           COMPREPLY=( $(compgen -d -- ${cur}) )
@@ -289,7 +289,7 @@ user.email"
           # do nothing
           ;;
       esac
-      
+
       # no argument completions
       if [[ "$cur" == -* ]]; then
         COMPREPLY=( $(compgen -W "${specopts}" -- ${cur}) )
@@ -303,7 +303,7 @@ user.email"
 --color --colour -C --no-color --no-colour -q --quiet -V --verbose -h \
 --help -v --version"
 
-	    # argument completions
+      # argument completions
       case "$prev" in
         -b|--blogdir)
           COMPREPLY=( $(compgen -d -- ${cur}) )
@@ -317,7 +317,7 @@ user.email"
           # do nothing
           ;;
       esac
-      
+
       # no argument completions
       if [[ "$cur" == -* ]]; then
         COMPREPLY=( $(compgen -W "${specopts}" -- ${cur}) )
