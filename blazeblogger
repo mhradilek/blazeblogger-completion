@@ -89,7 +89,7 @@ _blaze()
   fi
 
   # basic options - blaze utilities - wrapper's first option
-  opts="init config add edit remove list make log"
+  opts="init config add edit remove list make log help version"
 
   # handle utility dependent opts
   case "${first}" in
@@ -320,6 +320,14 @@ user.email"
       # no argument completions
       if [[ "$cur" == -* ]]; then
         COMPREPLY=( $(compgen -W "${specopts}" -- ${cur}) )
+        return 0
+      fi
+      ;;
+    help)
+    # help handler code ---------------------------------------------------
+      # no argument completions
+      if [[ "$prev" == "help" ]]; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
         return 0
       fi
       ;;
