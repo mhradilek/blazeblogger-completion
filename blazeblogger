@@ -154,8 +154,8 @@ user.email"
     # add handler code ----------------------------------------------------
       # utility specifick options
       local specopts="-b --blogdir -t --title -a --author -d --date -T \
---tags -u --url -p --page -P --post -H --html  -q --quiet \
--V --verbose -h --help -v --version"
+--tags -u --url -p --page -P --post -C --no-processor  -q --quiet -V \
+--verbose -h --help -v --version"
 
       # argument completions
       case "$prev" in
@@ -188,8 +188,8 @@ user.email"
     edit)
     # edit handler code ---------------------------------------------------
       # utility specifick options
-      local specopts="-b --blogdir -p --page -P --post -f --force -H \
---html -q --quiet -V --verbose -h --help -v --version"
+      local specopts="-b --blogdir -p --page -P --post -f --force -C \
+--no-processor -q --quiet -V --verbose -h --help -v --version"
 
       # argument completions
       case "$prev" in
